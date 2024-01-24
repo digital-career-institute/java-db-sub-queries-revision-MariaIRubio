@@ -10,11 +10,7 @@ FROM
   customers c
 JOIN 
   orders o ON c.customer_id = o.customer_id
-GROUP BY
-  c.customer_id,
-  c.company_name,
-  o.order_date
-HAVING
+WHERE
   o.order_date = (SELECT max(o.order_date) FROM orders o);
 ```
 2. Select all product names and prices that have unit price which is bigger than price of product with name 'Carnarvon Tigers'
